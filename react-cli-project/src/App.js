@@ -8,6 +8,7 @@ import Hooks from "./components/9-Hooks";
 import Routing from "./components/10-Routing";
 import Redux from "./components/11-Redux";
 import Context from "./components/12-Context";
+import Bonus from "./components/13-Bonus";
 
 import { Provider } from "react-redux";
 import store from "./components/11-Redux/store";
@@ -58,22 +59,27 @@ const lessions = [
     name: "Context",
     component: () => <Context />,
   },
+  {
+    id: 13,
+    name: "Bonus",
+    component: () => <Bonus />,
+  },
 ];
 
 function App() {
   const [index, setIndex] = React.useState(-1);
   return (
     <Provider store={store}>
-      <ul>
+      <ul style={{ display: 'flex', flexDirection: 'row' }}>
         {lessions.map((item) => {
           return (
-            <li key={item.id}>
+            <li style={{ flex: 1, }} key={item.id}>
               <button onClick={() => setIndex(item.id)}>{item.name}</button>
             </li>
           );
         })}
-        {index !== -1 && lessions.find((item) => item.id === index).component()}
       </ul>
+      {index !== -1 && lessions.find((item) => item.id === index).component()}
     </Provider>
   );
 }
