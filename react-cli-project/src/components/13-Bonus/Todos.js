@@ -8,8 +8,7 @@ import useFilter from "./useFilter";
 
 function Todos(props) {
   const { TodoItems, SetTodoItems } = React.useContext(TodoContext);
-  const [search, setSearch] = React.useState('');
-  const [filterList] = useFilter(TodoItems, search, 'title')
+  const [filterList, setSearch, search] = useFilter(TodoItems, 'title')
 
   function onClick(item) {
     //  update state;
